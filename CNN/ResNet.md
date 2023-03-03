@@ -26,12 +26,30 @@
 * 최적화 하기 더 쉽다. 따라서 어큐러시가 올라간다.
 * 아이디어 도출 과정
     * deeper 모델에 레이어를 추가로 구축.
-    * identity mapping 레이어, shallower 모델에게 배우는 레이어.
-    * deep residual learning 구조 발명.
-    * 기본 매핑(desired underlying)이 아니라 레지듀얼 매핑(residual) 진행.
-    * F(x)+x 형태. 2개 이상의 레이어를 스킵하고 바로 연결.
-    * 원본 데이터를 그대로 전달한다는 뜻에서 identity mapping 용어 사용.(cf. identity 행렬)
-    * 추가로 선언한게 없으므로 복잡도의 증가가 없다.
+    * identity mapping 레이어.
+    * deep residual learning 개념.
+        * 원본 데이터를 shortcut으로 연결.
+        * 기본 매핑(desired underlying)이 아니라 레지듀얼 매핑(residual) 진행.
+        * F(x)+x 형태. 2개 이상의 레이어를 스킵하고 바로 연결.
+        * 원본 데이터를 그대로 전달한다는 뜻에서 identity mapping 용어 사용.(cf. identity 행렬)
+        * 추가로 선언한게 없으므로 복잡도의 증가가 없다.
+    * bottleneck 개념.
+        * 빌딩블록을 다른 형태로 변경. 더 경제적인 이유 때문.
+        * 2개의 레이어(3x3, 3x3) -> 3개의 레이어(1x1, 3x3, 1x1)
+        * 1x1 : 차원 축소.
+        * 3x3 : 
+        * 1x1 : 차원 복원.
+    * Identity vs Projection
+        * Identity : 진짜 x 그대로 아무 손도 안댄 날 것.
+        * Projection : 리니어 프로젝션인 스퀘어 매트릭스와 곱한 결과. (차원 똑같게 맞춤)
+        * 왜 차원증가에서만 프로젝션 숏컷을 썼는지에 대한 실험적 데이터.
+        * 3개 케이스 비교.
+        * (A: 차원증가를 위해 패딩 사용, 모든 숏컷은 파라미터 없음.)
+        * (B: 차원증가를 위해 프로젝션 숏컷 사용, 나머지 숏컷은 identity 그대로.)
+        * (C: 모든 숏컷은 프로젝션 숏컷 사용.)
+        * 당연히 B가 A보다 잘나온다. 패딩은 Residual Learning이 안된 것이다.
+        * 근데 C가 B보다 잘나온다. 매우 미세하게.
+        * 따라서 메모리 절약, 복잡도 감소를 위해 B 채택.
 <br><br>
 
 ### [내가 사용할 부분]
