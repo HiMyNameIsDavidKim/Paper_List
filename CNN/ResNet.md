@@ -1,5 +1,6 @@
 # Deep Residual Learning for Image Recognition
-* Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun, Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2016, pp. 770-778
+* HE, Kaiming, et al. Deep residual learning for image recognition. In: Proceedings of the IEEE conference on computer vision and pattern recognition. 2016. p. 770-778.
+* CVPR 2016
 <br><br>
 
 ## [`논문 요약`]
