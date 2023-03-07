@@ -1,6 +1,5 @@
 # Deep Residual Learning for Image Recognition
 * Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun, Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2016, pp. 770-778
-* 책갈피(3.3부터 읽기)
 <br><br>
 
 ## [`논문 요약`]
@@ -10,7 +9,7 @@
 <br><br>
 
 ### [기존 문제점]
-* 러닝 시 unrefernced function 사용.
+* 러닝 시 unreferenced function 사용.
 * 레이어를 더 깊이 쌓을수 없다.(18 layer = 34 layer)
     * 문제1 : vanishing/exploding gradients.
     * normalized initialization이 해결.
@@ -55,9 +54,11 @@
 <br><br>
 
 ### [내가 사용할 부분]
-* X
+* 아이디어가 어떻게 도출되었는지.
 <br><br>
 
 ### [추가로 볼 레퍼런스]
-* 
+* VGGNet
+* Batch Normalization
+* Adam
 <br><br>
