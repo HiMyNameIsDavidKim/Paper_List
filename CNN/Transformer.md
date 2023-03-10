@@ -1,7 +1,7 @@
 # Attention Is All You Need
 * VASWANI, Ashish, et al. Attention is all you need. Advances in neural information processing systems, 2017, 30.
 * NIPS 2017
-* 책갈피 (3.4~)
+* 책갈피 (5.1~)
 <br><br>
 
 ## [`논문 요약`]
@@ -44,10 +44,6 @@
     * 인코더의 입력값 내의 단어간 관계 파악.
     * 디코더의 출력값 내의 단어간 관계 파악.
     * 인코더-디코더의 입력값-출력값 단어간 관계 파악.
-<br><br>
-
-### [내가 사용할 부분]
-* 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
