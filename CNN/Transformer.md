@@ -1,7 +1,6 @@
 # Attention Is All You Need
 * VASWANI, Ashish, et al. Attention is all you need. Advances in neural information processing systems, 2017, 30.
 * NIPS 2017
-* 책갈피 (5.1~)
 <br><br>
 
 ## [`논문 요약`]
@@ -51,6 +50,16 @@
 
 ### [추가로 볼 레퍼런스]
 * Layer Normalization
+<br><br>
+
+### [내 아이디어]
+* 이미지 인식을 위해서는 2D 임베딩이 필요한게 아닌가.
+    * 1D로 플래튼하면 상관 없다.
+* 이미지 한개 이식 보다는 비디오에서 효과를 보이지 않을까.
+    * 자율주행
+* 어텐션 알고리즘이라는 알고리즘을 기반으로 한 딥러닝 아키텍쳐.
+    * 그럼 전통적인 CV 알고리즘을 적용한 CNN 아키텍쳐를 만들면?
+    * "전통적인 비전 기술이 적용된 딥러닝 아키텍쳐는 현재 존재하지 않습니다."
 <br><br>
 
 

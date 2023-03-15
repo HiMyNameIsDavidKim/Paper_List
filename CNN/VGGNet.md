@@ -1,7 +1,6 @@
 # Very Deep Convolutional Networks for Large-Scale Image Recognition
 * SIMONYAN, Karen; ZISSERMAN, Andrew. Very deep convolutional networks for large-scale image recognition. arXiv preprint arXiv:1409.1556, 2014.
 * ICLR 2015
-* 책갈피(5~)
 <br><br>
 
 ## [`논문 요약`]
