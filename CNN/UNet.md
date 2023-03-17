@@ -1,14 +1,16 @@
 # U-Net: Convolutional Networks for Biomedical Image Segmentation
 * RONNEBERGER, Olaf; FISCHER, Philipp; BROX, Thomas. U-net: Convolutional networks for biomedical image segmentation. In: Medical Image Computing and Computer-Assisted Intervention–MICCAI 2015: 18th International Conference, Munich, Germany, October 5-9, 2015, Proceedings, Part III 18. Springer International Publishing, 2015. p. 234-241.
+* 책갈피()
 <br><br>
 
 ## [`논문 요약`]
 
 ### [저자의 의도]
-* 
+* 데이터 증강을 활용한 트레이닝 전략의 네트워크 아키텍쳐.
 <br><br>
 
 ### [기존 문제점]
+* 적은 수의 이미지로 학습이 잘 안된다.
 * 
 <br><br>
 
