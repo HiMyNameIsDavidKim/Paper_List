@@ -1,17 +1,17 @@
 # Going deeper with convolutions
 * SZEGEDY, Christian, et al. Going deeper with convolutions. In: Proceedings of the IEEE conference on computer vision and pattern recognition. 2015. p. 1-9.
 * CVPR 2015
-* 책갈피(ch3~)
 <br><br>
 
 ## [`논문 요약`]
 
 ### [저자의 의도]
-* 네트워크 내부에서 컴퓨팅 리소스 활용도 향상.
+* gradient vanishing이 없는 더 깊은 네트워크.
+* 효율적으로 다양한 크기의 필터를 사용해보자.
 <br><br>
 
 ### [기존 문제점]
-* 깊어질수록 vanishing gradient 문제 발생.
+* 깊어질수록 gradient vanishing 문제 발생.
 * 입력되는 이미지의 사이즈가 일정하지 않은 경우 정확도 떨어진다.
 * 여러 종류의 필터를 위해서는 여러 종류의 커널을 사용해야 한다.
 <br><br>
@@ -24,20 +24,21 @@
     * 3x3, 5x5 : 작은 크기, 큰 크기의 특징 추출.
     * 맥스 풀링 : 컨볼루션 레이어에 비해 위치 이동에 영향을 받지 않고 정보 전달.
     * 1x1을 사용해 차원축소 -> 계산량 감소, 복잡도 감소, 병목 현상 예방.
-* knobs and levers
-    * 인셉션 모듈 내에서 필터수와 차원수를 튜닝하는 도구.
-    * 실험적으로 더 뛰어난 모델 아키텍쳐를 탐색한다.
-    * 노브 : 필터의 개수와 차원 수를 조절.
-    * 레버 : 입력 데이터의 채널 수와 차원 수를 조절.
 * auxiliary classifier
     * 중간 지점에 해당하는 gradient와 적은 수의 파라미터로 역전파에서 gradient vanishing 완화. 
     * 네트워크가 깊어짐에 따라 gradient vanishing 발생.
     * 중간중간에 (AvgPool - 1x1 - FC - FC - Softmax)로 구성된 classifier 2번 진행.
     * 끝까지 학습이 안된 상태이므로 소실이 덜 된 그라디언트 전달 가능.
     * 가중치 부여로 얼마나 전달할지 조절 가능. 설정값 = (0.3, 0.4, 0.5)
+* knobs and levers
+    * 인셉션 모듈 내에서 필터수와 차원수를 튜닝하는 도구.
+    * 실험적으로 더 뛰어난 모델 아키텍쳐를 탐색한다.
+    * 노브 : 필터의 개수와 차원 수를 조절.
+    * 레버 : 입력 데이터의 채널 수와 차원 수를 조절.
 <br><br>
 
 ### [추가로 볼 레퍼런스]
+* AlexNet
 * R-CNN
 <br><br>
 
