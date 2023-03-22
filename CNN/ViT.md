@@ -1,6 +1,6 @@
 # AN IMAGE IS WORTH 16X16 WORDS:TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE
 * DOSOVITSKIY, Alexey, et al. An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929, 2020.
-* 책갈피(2~)
+* ICLR 2021
 <br><br>
 
 ## [`논문 요약`]
