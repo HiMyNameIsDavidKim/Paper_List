@@ -35,7 +35,7 @@
 ## [논문 읽기]
 1. title, abstract, figure
 (=무엇을 말하고자 하는가)
- -> 의도 파악
+ -> 의도 파악 1
 2. introduction, conclusion
 (=이 논문이 왜 accept 되어야 하는가)
  -> 의도 파악 2, 완독할지 결정.

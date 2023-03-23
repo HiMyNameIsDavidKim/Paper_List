@@ -6,7 +6,7 @@
 ## [`논문 요약`]
 
 ### [저자의 의도]
-* CNN에 의존하지 않는 pure transformer로 이미지 분류.
+* CNN에 의존하지 않는 pure transformer architecture로 이미지 분류.
 <br><br>
 
 ### [기존 문제점]
