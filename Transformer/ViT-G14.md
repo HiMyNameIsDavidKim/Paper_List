@@ -1,7 +1,7 @@
 # Scaling Vision Transformers
 * ZHAI, Xiaohua, et al. Scaling vision transformers. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022. p. 12104-12113.
 * CVPR 2022
-* 책갈피()
+* 책갈피(2.0~)
 <br><br>
 
 ## [`논문 요약`]
@@ -9,6 +9,7 @@
 ### [저자의 의도]
 * NLP에서 트랜스포머 성능 향상에 scaling이 중요하다.
 * 비전 트랜스포머에서도 scaling을 해보자.
+* 반복 실험을 통해 최적의 recipe를 찾아보자.
 <br><br>
 
 ### [기존 문제점]
@@ -18,7 +19,7 @@
 ### [해결 아이디어]
 * scaling
     * 
-* Few-Shot Transfer 반복 실험
+* Few-Shot learning 기법의 레시피 탐색
     * 
 * 최종 MLP 레이어에서 강력한 L2 사용
     * 
@@ -43,6 +44,9 @@
     * 사전학습이 실제 수행해야할 task와 유사할수록 높다.
 * few shot transfer
     * 사전학습된 모델을 적은 양의 학습데이터를 이용해 새로운 태스크에 대해 fine-tuning.
+* scaling law
+    * 트랜스포머 중 NLP 모델에서 모델 크기 증가와 모델 성능 향상 관계에 대한 지표.
+    * 모델 크기와 로그(성능 향상)은 비례한다.
 <br><br>
 
 

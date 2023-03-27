@@ -19,17 +19,19 @@
     * 특화 성향. 예를들어 이미지 분류에 특화된 모델인 성향.
     * 트랜스포머는 NLP 특화 모델이다. 이미지에 대한 bias 필요.
     * inductive bias가 없는 주된 원인은 픽셀 간 상호작용을 모르는 것.
+    * patch embedding으로 큰 이미지 쪼개기.
     * positional embedding으로 공간 정보를 추출.
-    * 각 패치에 positional embedding을 더해 inductive bias를 부여.
-    * 모델은 이미지를 패치들의 sequence로 해석하고, 트랜스포머에 넣는다.
-* hybrid architecture
-    * raw image가 아닌 CNN 피쳐맵을 패치로 쪼개 넣는 구조.
-    * 2가지 하이브리드(패치 임베딩 공간정보 + 각 패치 CNN 피쳐맵)
-    * CNN 장점 + 트랜스포머 장점
+    * 각 patch에 positional을 더해 inductive bias를 부여.
+    * 큰 이미지를 패치들의 sequence로 해석하고, 트랜스포머에 넣는다.
 * self-supervised pre-training
     * GPT나 BERT들이 쓰는 사전학습 차용.
     * 레이블이 없는 대용량 데이터셋에서 복합적인 특징 추출법 학습.
     * 실전에서 이 방법을 활용하도록 유도함. (실전도 레이블이 없으니까 효과적)
+    * 반드시 '대용량' 데이터셋에서 진행해야 성능 향상.
+* hybrid architecture
+    * raw image가 아닌 CNN 피쳐맵을 패치로 쪼개 넣는 구조.
+    * 2가지 하이브리드(패치 임베딩 공간정보 + 각 패치 CNN 피쳐맵)
+    * CNN 장점 + 트랜스포머 장점
 <br><br>
 
 ### [추가로 볼 레퍼런스]
