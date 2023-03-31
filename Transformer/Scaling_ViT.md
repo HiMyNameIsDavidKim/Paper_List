@@ -1,7 +1,6 @@
 # Scaling Vision Transformers
 * ZHAI, Xiaohua, et al. Scaling vision transformers. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022. p. 12104-12113.
 * CVPR 2022
-* 책갈피(2.0~)
 <br><br>
 
 ## [`논문 요약`]
