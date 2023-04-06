@@ -36,6 +36,7 @@
 
 ### [추가로 볼 레퍼런스]
 * Detection Transformer(End-to-end object detection with transformers)
+* Set transformer: A framework for attention-based permutation-invariant neural networks.
 <br><br>
 
 ### [내 아이디어]
