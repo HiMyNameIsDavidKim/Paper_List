@@ -19,6 +19,7 @@
     * 큰 이미지를 작은 패치로 쪼개고 인풋 시퀀스 토큰들로 생각하여 사용.
     * (H, W, C) -> N * (P, P, C)
     * 2D를 1D로 flatten 해준다.
+    * 2D self attention은 memory expensive.
 * Embedding
     * learnable embedding, position embedding 2가지.
     * learnable은 [class] embedding token을 패치 시퀀스 가장 앞에 붙이는 작업.

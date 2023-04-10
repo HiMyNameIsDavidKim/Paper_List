@@ -7,8 +7,8 @@
 
 ### [저자의 의도]
 * 스케일링은 높은 퍼포먼스를 위한 가장 중요한 요소다.
-* ViT에 스케일링을 하는 방법은 연구가 없다.
-* 스케일링 ViT를 위한 아키텍쳐와 트레이닝을 정의해보자.
+* NLP와 다르게 CV에서 스케일링에 대한 연구가 없다.
+* 스케일링 ViT를 위한 아키텍쳐와 트레이닝 메서드를 정의해보자.
 <br><br>
 
 ### [기존 문제점]
@@ -18,14 +18,19 @@
 
 ### [해결 아이디어]
 * scaling up(계산량, 모델사이즈, 데이터셋 추가)
-    * 더 많은 레이어의 모델로 더 큰 데이터셋 학습 시 실제로 representation quality가 증가한다.
+    * 모델 사이즈가 크면 representation quality가 증가한다.
+    * 데이터셋이 크면 representation quality가 증가한다.
+    * 모델 사이즈가 커지면서 얻는 이득은 한계가 있다. (saturation)
     * 더 큰 모델만이 더 큰 데이터셋에서 이득을 얻을 수 있다.
-    * 모델이 아무리 커져도 error가 saturation 된다. (irreducible entropy, performance ceiling)
+    * irreducible entropy, performance ceiling
+* 큰 모델이 더 sample efficient 하다.
+    * sample efficient : 작은 데이터셋에서도 학습을 잘 한다.
+    * 데이터셋이 작아지거나 달라져도 큰 모델이 항상 퍼포먼스가 좋다.
 * large-scale training을 위한 레시피 탐색
-    * MLP 헤드에서만 weight decay
+    * pre-traing 시 MLP 헤드에서만 weight decay
     * class token 삭제로 메모리 확보
     * 데이터셋 스케일링 업(JFT-3B)
-    * 메모리 절약형 옵티마이저
+    * 메모리 절약형 옵티마이저(16비트)
     * LR 스케쥴러(웜업 비기닝 & 쿨다운 엔드)
     * 모델 스케일링 업(G/14)
 <br><br>
