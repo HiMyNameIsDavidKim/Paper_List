@@ -28,7 +28,7 @@
     * 데이터셋이 작아지거나 달라져도 큰 모델이 항상 퍼포먼스가 좋다.
 * large-scale training을 위한 레시피 탐색
     * pre-traing 시 MLP 헤드에서만 weight decay
-    * class token 삭제로 메모리 확보
+    * class token 삭제로 메모리 확보(GAP, MAP)
     * 데이터셋 스케일링 업(JFT-3B)
     * 메모리 절약형 옵티마이저(16비트)
     * LR 스케쥴러(웜업 비기닝 & 쿨다운 엔드)
