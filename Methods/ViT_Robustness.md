@@ -23,11 +23,17 @@
     * ViT는 patch-based transformation으로 semantic이 파괴된 이미지도 높은 신뢰도로 맞춘다.
     * 사람은 전혀 알아볼 수 없을 정도로 파괴해도 마찬가지.
     * ViT가 어떻게 이미지를 인지하는지 이해할 수 없다.
-* no-indicative feature와 robustness의 관계
+* non-indicative feature와 robustness의 관계
     * 실험적 결과, patch-based transformation를 직접적으로 사용해서는 안된다.
     * accuracy가 기본 테스트셋도 떨어지고, out-of-distribution 데이터셋도 떨어짐.
 * Negative augmentation
-    * 
+    * ViT가 non-indicative feature에 의존하는 것을 규제하기 위한 방법.
+    * distribution labels를 통해 학습되는 것을 방해하도록 loss regularization.
+    * 기존 label 대신 똑같은 값이 들어간 label 사용.
+    * (ex. [1, 0, 0, 0, 0] -> [0.2, 0.2, 0.2, 0.2, 0.2])
+* 실험 결과
+    * negative augmentation을 해보니 out-of distribution 데이터셋에서 정확도가 올라감.
+    * positive augmentation과 같이 진행해도 올라감. 상호보완적임.
 <br><br>
 
 ### [추가로 볼 레퍼런스]
