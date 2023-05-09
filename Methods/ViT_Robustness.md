@@ -1,6 +1,6 @@
 # 📓Paper List
 * Understanding and Improving Robustness of Vision Transformers through Patch-based Negative Augmentation
-* QIN, Yao, et al. Understanding and improving robustness of vision transformers throug
+* QIN, Yao, et al. Understanding and improving robustness of vision transformers through patch-based negative augmentation. Advances in Neural Information Processing Systems, 2022, 35: 16276-16289.
 * NeurIPS 2022.
 <br><br>
 

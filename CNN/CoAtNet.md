@@ -6,8 +6,7 @@
 ## [`논문 요약`]
 
 ### [저자의 의도]
-* Naturally combine the strengths from both architectures. (CNN and Transformer)
-* Improve generalization, capacity and efficiency.
+* 
 <br><br>
 
 ### [기존 문제점]
