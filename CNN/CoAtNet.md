@@ -18,7 +18,8 @@
 <br><br>
 
 ### [추가로 볼 레퍼런스]
-* 
+* MBConv Blocks
+* Mobilenetv2: Inverted residuals and linear bottlenecks
 <br><br>
 
 ### [내 아이디어]
@@ -30,7 +31,8 @@
 ## [`메모`]
 
 ### [배경 지식]
-* 
+* Depthwise Separable Convolution
+    * 
 <br><br>
 
 
