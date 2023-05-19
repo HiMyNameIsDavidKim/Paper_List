@@ -39,6 +39,8 @@
     * Residual: wide -> narrow -> wide (wide layers are connected)
     * Inverted residual: narrow -> wide -> narrow (narrow layers are connected)
     * 압축된 양질의 정보가 저차원에서도 저장되어 있다는 가정.
+* Relative attention
+    * 
 <br><br>
 
 
