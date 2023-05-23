@@ -37,7 +37,16 @@
     * MBConv와 relative attention은 구조가 유사하며 결합하기 용이함.
     * 3가지 특장점을 모두 커버하는 모델 수립.
 * Architecture
-    * 
+    * 다운 샘플링을 통해 spatial size를 줄이고, global relative attention 진행.
+    * S0 : stem stage, (3x3) 커널을 사용해서 spatial size를 절반으로 줄이기.
+    * S1 : Always MBConv block, Conv 블럭이 앞쪽 스테이지에 있어 주는 것이 퍼포먼스에 유리함.
+    * S2~4 : MBConv block or relative attention block.
+    * 4가지 종류의 모델 (CCCC, CCCT, CCTT, CTTT) -> 실험 결과 CCTT가 베스트 모델.
+* Generalization 분석
+    * 예상한대로 Conv 레이어가 많을수록 generalization이 잘됨.
+* Capacity 분석
+    * attention 레이어가 많다고 capacity가 높은건 아님.
+    * stem stage에서 ViT는 너무 많은 정보 손실을 당하고, capacity가 오히려 제한됨.  
 <br><br>
 
 ### [추가로 볼 레퍼런스]
