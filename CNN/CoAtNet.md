@@ -39,7 +39,7 @@
 * Architecture
     * 다운 샘플링을 통해 spatial size를 줄이고, global relative attention 진행.
     * S0 : stem stage, (3x3) 커널을 사용해서 spatial size를 절반으로 줄이기.
-    * S1 : Always MBConv block, Conv 블럭이 앞쪽 스테이지에 있어 주는 것이 퍼포먼스에 유리함.
+    * S1 : Always MBConv block, Conv 블럭이 앞쪽 스테이지에 있는 것이 퍼포먼스에 유리함.
     * S2~4 : MBConv block or relative attention block.
     * 4가지 종류의 모델 (CCCC, CCCT, CCTT, CTTT) -> 실험 결과 CCTT가 베스트 모델.
 * Generalization 분석
