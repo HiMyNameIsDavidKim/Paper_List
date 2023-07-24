@@ -54,8 +54,8 @@
         * masks는 convolution 레이어를 통과시켜 임베딩을 만들고 이미지 임베딩과 element-wise로 더함 from 일반적인 segmentation 메서드
     * Mask decoder
         * 이미지 임베딩과 프롬프트 임베딩을 효율적으로 매핑해 아웃풋 마스크를 만든다.
-        * 0) 프롬프트 임베딩에 output token embedding을 부착한다.
-        * 1) 
+        0. 프롬프트 임베딩에 output token embedding을 부착한다.
+        1. sdf
 <br><br>
 
 ### [추가로 볼 레퍼런스]
