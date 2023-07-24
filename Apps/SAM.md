@@ -39,13 +39,23 @@
         * 아키텍쳐는 크게 3가지로 나눌 수 있다.
         * image encoder + flexible prompt encoder + fast mask decoder
     * Image encoder
+        * 이미지에서 임베딩을 추출한다.
         * MAE로 프리 트레이닝된 ViT-H/16 이다.
         * MAE는 Masked AutoEncoder는 높은 scalability와 강력한 pre-training이 가능하게 해준다.
-        * 인풋 이미지 : (1024 * 1024) size * (256 * 3) channels
+        * 인풋 이미지 : (1024 * 1024) size * (16 * 16 * 3) channels
         * 패치 사이즈 = 16이며, 채널에 (1x1 Conv) (3x3 Conv) (Norm) 진행.
         * 아웃풋 임베딩 : (64 * 64) patches * 256 dimensions
     * Prompt encoder
-        * 
+        * 프롬프트에서 임베딩을 추출한다.
+        * 프롬프트는 2가지 종류. Sparse(points, boxes, text), Dense(masks).
+        * 모든 케이스는 기존에 있는 임베딩을 추출하는 알고리즘을 활용한다.
+        * points, boxes는 positional encoding(해당 점의 위치 + 피사체와 배경을 구별하게 학습된 임베딩)를 추출 from 푸리에 피쳐 머시기 논문
+        * free-form text는 off-the-shelf text encoder로 추출 from CLIP 논문
+        * masks는 convolution 레이어를 통과시켜 임베딩을 만들고 이미지 임베딩과 element-wise로 더함 from 일반적인 segmentation 메서드
+    * Mask decoder
+        * 이미지 임베딩과 프롬프트 임베딩을 효율적으로 매핑해 아웃풋 마스크를 만든다.
+        * 0) 프롬프트 임베딩에 output token embedding을 부착한다.
+        * 1) 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
