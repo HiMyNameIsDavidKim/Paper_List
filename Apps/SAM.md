@@ -51,15 +51,20 @@
         * 모든 케이스는 기존에 있는 임베딩을 추출하는 알고리즘을 활용한다.
         * points, boxes는 positional encoding(해당 점의 위치 + 피사체와 배경을 구별하게 학습된 임베딩)를 추출 from 푸리에 피쳐 머시기 논문
         * free-form text는 off-the-shelf text encoder로 추출 from CLIP 논문
-        * masks는 convolution 레이어를 통과시켜 임베딩을 만들고 이미지 임베딩과 element-wise로 더함 from 일반적인 segmentation 메서드
+        * masks는 convolution 레이어를 통과시켜 16배 작게 만들고 이미지 임베딩과 element-wise로 더함 from 일반적인 segmentation 메서드
     * Mask decoder
         * 이미지 임베딩과 프롬프트 임베딩을 효율적으로 매핑해 아웃풋 마스크를 만든다.
-        1. 프롬프트 임베딩에 output token embedding을 부착한다.
-        2. sdf
+        * 0: 프롬프트 임베딩에 output token embedding을 부착한다. (클래스 토큰 개념) 그리고 지금부터 프롬프트 임베딩을 토큰이라 부른다.
+        * 1: self-attention 레이어를 통해 토큰에서 representation을 추출한다.
+        * 2: cross-attention 레이어를 통해 토큰(=Q)에서 이미지 임베딩(=K, V)을 사용해 representation을 추출한다. (이때는 토큰에 가까울 것임)
+        * 3: point-wise MLP가 토큰 즉 프롬프트를 각 토큰에 대해 차원 간 업데이트를 한다. (GAP 레이어와 비슷한 역할이나 차원을 줄이진 않음.)
+        * 4: cross-attention 레이어를 통해 이미지 임베딩(=Q)에서 토큰(=K, V)을 사용해 representation을 추출한다. (이때는 이미지 임베딩에 가까울 것임)
+        * 5: 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
 * interactive segmentation
+* Fourier features let networks learn high frequency functions in low dimensional domains
 * CLIP
 <br><br>
 
