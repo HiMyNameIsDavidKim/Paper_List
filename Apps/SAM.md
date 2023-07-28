@@ -54,18 +54,47 @@
         * masks는 convolution 레이어를 통과시켜 16배 작게 만들고 이미지 임베딩과 element-wise로 더함 from 일반적인 segmentation 메서드
     * Mask decoder
         * 이미지 임베딩과 프롬프트 임베딩을 효율적으로 매핑해 아웃풋 마스크를 만든다.
+        * 총 2번의 디코딩(self-attn, cross-attn, MLP, corss-attn)이 이루어진다.
         * 0: 프롬프트 임베딩에 output token embedding을 부착한다. (클래스 토큰 개념) 그리고 지금부터 프롬프트 임베딩을 토큰이라 부른다.
         * 1: self-attention 레이어를 통해 토큰에서 representation을 추출한다.
         * 2: cross-attention 레이어를 통해 토큰(=Q)에서 이미지 임베딩(=K, V)을 사용해 representation을 추출한다. (이때는 토큰에 가까울 것임)
         * 3: point-wise MLP가 토큰 즉 프롬프트를 각 토큰에 대해 차원 간 업데이트를 한다. (GAP 레이어와 비슷한 역할이나 차원을 줄이진 않음.)
         * 4: cross-attention 레이어를 통해 이미지 임베딩(=Q)에서 토큰(=K, V)을 사용해 representation을 추출한다. (이때는 이미지 임베딩에 가까울 것임)
-        * 5: 
+        * 5: 2개의 transposed Conv layer를 사용해서 이미지 임베딩을 4배로 키운다.
+        * 6-1: cross-attention 레이어를 통해 토큰(=Q)에서 이미지 임베딩(=K, V)을 사용해 representation을 추출한다. (이때는 토큰에 가까울 것임) 여기서 사용하는 토큰은 최종 크로스 어텐션 직전의 토큰이고, 이미지 임베딩은 최종 이미지 임베딩이다.
+        * 6-2: 6-1의 output을 small 3-layer MLP에 통과시킨다. (업스케일링된 이미지 임베딩과 채널 디멘션 매칭을 위함)
+        * 7: 5의 결과와 6의 결과를 spatially point-wise product하여 최종 마스크를 예측한다. (5는 업스케일링된 이미지 임베딩, 6은 dimension이 매칭된 토큰)
+    * Ambiguity-aware
+        * single input prompt는 이 상황에서 ambiguous를 일으킬 수 있다.
+        * prompt의 정확한 의도가 모호하여 일관적인 답을 못낼 가능성이 있는 것.
+        * 저자들은 3개의 output tokens를 사용하여 multiple masks를 예측하게 했다. (Whole, part, subpart)
+        * 학습하는 동안에 3개의 loss를 항상 계산하되, backpropagation은 가장 낮은 loss로만 진행한다.
+        * small head 1개가 masks의 랭킹을 계산한다.
+        * 각 마스크가 object를 얼마나 커버하는지 IoU를 계산한다.
+    * Losses
+        * focal loss와 dice loss에 weight를 줘서 20:1 비율로 더함.
+        * 여기서 focal loss는 각 픽셀이 segmentation의 클래스를 맞췄는지 classification과 관련되어 있고, dice loss는 segmentation의 영역이 overlaping된 양과 관련되어 있다.
+    * Training algorithm
+        * Interactive segmentation으로 셋업 되었다. 유저가 모델에 feedback을 준다.
+        * 용어로 foreground는 피사체이고, background는 배경 영역이다.
+        * 1: 전체 이미지에서 랜덤하게 foreground point가 선택된다.
+        * 2: 모델이 첫 prompt(=point)에 대하여 mask를 예측한다.
+        * 3: error region에서 균일하게 후속 point가 선택된다.
+        * 4-1: 새 point가 foreground 위에 있으면 false negative 다.
+        * 4-2: 새 point가 background 위에 있으면 false positive 다.
+        * 5: 새 point가 1의 foreground point이며 이 작업을 자동으로 반복한다.
+* Data
+* 총 3번의 단계를 거쳐 데이터 엔진을 만든다.
+* 최종 목표는 완전 자동화된 데이터 엔진이다.
+    * Assisted-manual stage
+        * 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
 * interactive segmentation
 * Fourier features let networks learn high frequency functions in low dimensional domains
 * CLIP
+* focal loss, dice loss
 <br><br>
 
 ### [내 아이디어]
