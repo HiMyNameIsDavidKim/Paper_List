@@ -75,7 +75,8 @@
         * focal loss와 dice loss에 weight를 줘서 20:1 비율로 더함.
         * 여기서 focal loss는 각 픽셀이 segmentation의 클래스를 맞췄는지 classification과 관련되어 있고, dice loss는 segmentation의 영역이 overlaping된 양과 관련되어 있다.
     * Training algorithm
-        * Interactive segmentation으로 셋업 되었다. 유저가 모델에 feedback을 준다.
+        * Interactive segmentation으로 셋업 되었다.
+        * 유저가 모델에 feedback을 주는 작업을 자동화 설계 했다.
         * 용어로 foreground는 피사체이고, background는 배경 영역이다.
         * 1: 전체 이미지에서 랜덤하게 foreground point가 선택된다.
         * 2: 모델이 첫 prompt(=point)에 대하여 mask를 예측한다.
@@ -84,8 +85,8 @@
         * 4-2: 새 point가 background 위에 있으면 false positive 다.
         * 5: 새 point가 1의 foreground point이며 이 작업을 자동으로 반복한다.
 * Data
-* 총 3번의 단계를 거쳐 데이터 엔진을 만든다.
-* 최종 목표는 완전 자동화된 데이터 엔진이다.
+* 학습에 사용될 데이터(이미지, 레이블 마스크)를 만드는 데이터 엔진이 구동된다.
+* 3가지 스테이지의 데이터 엔진이 구동되며, 최종 목표는 완전 자동화된 데이터 엔진이다.
     * Assisted-manual stage
         * 
 <br><br>
