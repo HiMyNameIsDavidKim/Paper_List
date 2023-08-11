@@ -17,7 +17,8 @@
 <br><br>
 
 ### [추가로 볼 레퍼런스]
-* 
+* Accurate, large minibatch SGD: Training ImageNet in 1 hour
+    * lr, warm up 관련.
 <br><br>
 
 ### [내 아이디어]
@@ -29,8 +30,18 @@
 ## [`메모`]
 
 ### [배경 지식]
-* capability : 모델이 얼마나 복잡한 함수를 학습하거나 모델이 어떤 유형의 작업을 수행할 수 있는지에 대한 능력. 더 복잡한 패턴이나 관계를 학습.
-* capacity : 모델 내부의 매개변수(parameter)의 개수나 모델의 구조의 용량. 더 복잡한 함수를 표현. generalize가 잘 된다.
+* capability
+    * 모델이 얼마나 복잡한 함수를 학습하거나 모델이 어떤 유형의 작업을 수행할 수 있는지에 대한 능력
+    * 더 복잡한 패턴이나 관계를 학습
+* capacity
+    * 모델 내부의 매개변수(parameter)의 개수나 모델의 구조의 용량
+    * 더 복잡한 함수를 표현
+    *  generalize가 잘 된다.
+* linear probing
+    * 사전 학습된 모델의 출력 특징은 고정하고 출력된 특징을 기반으로 학습.
+    * MLP head만 weight를 새로 학습하는 것.
+    * 사전 학습된 모델 전체를 다시 학습하는 fine-tuning과는 다른 방법이다.
+    * 더 빨리 학습시킬 수 있으나, 성능이 떨어질 수 있다.
 <br><br>
 
 
