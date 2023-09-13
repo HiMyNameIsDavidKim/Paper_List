@@ -60,10 +60,10 @@
         * 0: 프롬프트 임베딩에 output token embedding을 부착한다. (클래스 토큰 개념) 그리고 지금부터 프롬프트 임베딩을 토큰이라 부른다.
         * 1: self-attention 레이어를 통해 토큰에서 representation을 추출한다.
         * 2: cross-attention 레이어를 통해 토큰(=Q)에서 이미지 임베딩(=K, V)을 사용해 representation을 추출한다. (이때는 토큰에 가까울 것임)
-        * 3: point-wise MLP가 토큰 즉 프롬프트를 각 토큰에 대해 차원 간 업데이트를 한다. (GAP 레이어와 비슷한 역할이나 차원을 줄이진 않음.)
+        * 3: point-wise MLP가 토큰 즉 프롬프트를 각 토큰에 대해 차원 간 업데이트를 한다. (GAP 레이어와 비슷한 역할이나 차원을 줄이진 않음. 더 복잡한 임베딩을 계산.)
         * 4: cross-attention 레이어를 통해 이미지 임베딩(=Q)에서 토큰(=K, V)을 사용해 representation을 추출한다. (이때는 이미지 임베딩에 가까울 것임)
         * 5: 2개의 transposed Conv layer를 사용해서 이미지 임베딩을 4배로 키운다.
-        * 6-1: cross-attention 레이어를 통해 토큰(=Q)에서 이미지 임베딩(=K, V)을 사용해 representation을 추출한다. (이때는 토큰에 가까울 것임) 여기서 사용하는 토큰은 최종 크로스 어텐션 직전의 토큰이고, 이미지 임베딩은 최종 이미지 임베딩이다.
+        * 6-1: cross-attention 레이어를 통해 토큰(=Q)에서 이미지 임베딩(=K, V)을 사용해 representation을 추출한다. (이때는 토큰에 가까울 것임) 여기에 들어가는 토큰은 최종 크로스 어텐션 직전의 토큰이고, 이미지 임베딩은 최종 이미지 임베딩이다.
         * 6-2: 6-1의 output을 small 3-layer MLP에 통과시킨다. (업스케일링된 이미지 임베딩과 채널 디멘션 매칭을 위함)
         * 7: 5의 결과와 6의 결과를 spatially point-wise product하여 최종 마스크를 예측한다. (5는 업스케일링된 이미지 임베딩, 6은 dimension이 매칭된 토큰)
     * Ambiguity-aware
@@ -128,7 +128,7 @@
         * 텍스트를 입력하면 해당 텍스트의 객체를 segmentation
         * CLIP으로 text 임베딩 생성 -> text를 prompt로 SAM 구동
         * 기존 모델 없음
-    * 6: 생략
+    * 6: Ablations(생략)
 <br><br>
 
 ### [추가로 볼 레퍼런스]
