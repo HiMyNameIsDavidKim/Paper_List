@@ -43,7 +43,7 @@
     * Image encoder
         * 이미지에서 임베딩을 추출한다.
         * MAE로 프리 트레이닝된 ViT-H/16 이다.
-        * MAE는 Masked AutoEncoder는 높은 scalability와 강력한 pre-training이 가능하게 해준다.
+        * MAE(Masked AutoEncoder)는 높은 scalability와 강력한 pre-training이 가능하게 해준다.
         * 인풋 이미지 : (1024 * 1024) size * (16 * 16 * 3) channels
         * 패치 사이즈 = 16이며, 채널에 (1x1 Conv) (3x3 Conv) (Norm) 진행.
         * 아웃풋 임베딩 : (64 * 64) patches * 256 dimensions
