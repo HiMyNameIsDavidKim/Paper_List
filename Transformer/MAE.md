@@ -5,7 +5,9 @@
 ## [`논문 요약`]
 
 ### [저자의 의도]
-* 
+* MAE는 CV분야의 scalable한 slef-supervised 모델이다.
+* 큰 모델을 효율적이고 효과적으로 학습해보자.
+* generalize가 잘 되는 높은 capacity를 가진 모델에 대하여 접근해보자.
 <br><br>
 
 ### [기존 문제점]
