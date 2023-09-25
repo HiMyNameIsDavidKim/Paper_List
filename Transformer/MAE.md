@@ -11,11 +11,25 @@
 <br><br>
 
 ### [기존 문제점]
-* 
+* NLP의 BERT 모델에서 masked autoencoder 메서드를 잘 사용하고 있으나, CV에는 비교적 성능이 떨어진다.
+* NLP와 CV의 어떤점이 MAE에 차이점을 야기하는지 생각해보자.
+    * CNN과 BERT의 architecture 차이(ViT 등장으로 어느정도 해결)
+    * Information density
+    * Autoencoder의 Decoder 부분
 <br><br>
 
 ### [해결 아이디어]
-* 
+* Masking a high portion
+    * 언어는 인간이 만든 시그널이고, 이미지는 자연이 만든 시그널이다.
+    * 언어는 이미지에 비해서 높은 밀도의 정보를 가지고 있다.
+    * NLP 모델은 오직 적은 수의 단어만 예측하는데, 그렇다고 해서 CV에서 적은 양의 mask를 해선 안된다. 정보 밀도의 수준이 다르기 때문이다.
+    * 이 전략은 정보 과잉을 해결해주고, 사진 전체를 보는 능력을 요구한다.
+* Masking ramdom patches
+    * CV에서는 디코더가 pixel 재구성 작업을 하는데 이것은 recognition에 비해 low semantic level의 작업이다.
+    * NLP에서는 디코더가 missing word 재구성 작업을 하는데 이것은 high semantic level의 작업이다.
+    * 따라서, pixel이 아닌 patches를 재구성 하게 만들고, token(=포지션)을 가려주어야 비슷한 수준의 작업이 된다.
+* Masking
+    * 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
