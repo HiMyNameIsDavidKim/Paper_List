@@ -28,8 +28,17 @@
     * CV에서는 디코더가 pixel 재구성 작업을 하는데 이것은 recognition에 비해 low semantic level의 작업이다.
     * NLP에서는 디코더가 missing word 재구성 작업을 하는데 이것은 high semantic level의 작업이다.
     * 따라서, pixel이 아닌 patches를 재구성 하게 만들고, token(=포지션)을 가려주어야 비슷한 수준의 작업이 된다.
-* Masking
-    * 
+* Approach
+    * Masking
+        * ViT처럼 MAE도 이미지를 패치로 쪼갠다.
+        * 높은 마스킹 비율로 랜덤 샘플링하면 정보 과잉을 줄일 수 있다.
+        * 작업이 주변 패치에 의해 너무 손쉽게 풀리는 경우를 방지한다.
+    * MAE encoder
+        * MAE의 인코더는 ViT와 동일하지만 오직 마스킹되지 않은 패치만 인풋된다.
+        * 인풋과 아웃풋 모두 전체 사진에서 작은 포션(약 25%)의 패치 세트로 구성된다.
+        * 이로써 계산량과 메모리의 일부만 사용하면서 매우 큰 크기의 인코더를 학습시킬 수 있다.
+    * MAE decoder
+        * 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
