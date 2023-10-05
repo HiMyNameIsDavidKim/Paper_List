@@ -5,7 +5,7 @@
 ## [`논문 요약`]
 
 ### [저자의 의도]
-* MAE는 CV분야의 scalable한 slef-supervised 모델이다.
+* MAE는 CV분야의 scalable한 self-supervised 모델이다.
 * 큰 모델을 효율적이고 효과적으로 학습해보자.
 * generalize가 잘 되는 높은 capacity를 가진 모델에 대하여 접근해보자.
 <br><br>
@@ -23,7 +23,7 @@
     * 언어는 인간이 만든 시그널이고, 이미지는 자연이 만든 시그널이다.
     * 언어는 이미지에 비해서 높은 밀도의 정보를 가지고 있다.
     * NLP 모델은 오직 적은 수의 단어만 예측하는데, 그렇다고 해서 CV에서 적은 양의 mask를 해선 안된다. 정보 밀도의 수준이 다르기 때문이다.
-    * 이 전략은 정보 과잉을 해결해주고, 사진 전체를 보는 능력을 요구한다.
+    * 이 전략은 정보 과잉을 해결해주고, 이미지 전체를 보는 능력을 요구한다.
 * Masking ramdom patches
     * CV에서는 디코더가 pixel 재구성 작업을 하는데 이것은 recognition에 비해 low semantic level의 작업이다.
     * NLP에서는 디코더가 missing word 재구성 작업을 하는데 이것은 high semantic level의 작업이다.
