@@ -47,8 +47,8 @@
     * 1차원 Conv -> 리니어 프로젝션. B, C Δ 3개로 만들어준다.
     * Δ는 A와 B를 A바와 B바로 만드는데 사용한다.
     * SSM을 사용해 y_forward와 y_backward를 계산한다.
-    * y_forward와 y_backward를 z로 게이트하여 더한다. (RNN methods)
-    * 이게 최종 아웃풋 시퀸스 T_l.
+    * z를 게이트로 사용하여 y_forward와 y_backward를 선택적으로 추출.(RNN methods)
+    * 두 결과를 더하면 최종 아웃풋 시퀸스 T_l.
 * Architecture details
     * L(블럭 수), D(히든 스테이트 디멘션), E(익스펜디드 스테이트 디멘션), N(SSM 디멘션)
     * 스탠다드 모델, L=24, D=192, E=384, N=16
@@ -93,7 +93,9 @@
         * FPS와 GPU 메모리 사용량 비교, 일단 Vim의 성능이 더 좋은데 이미지 사이즈가 커지면 커질수록 격차가 벌어진다.
         * 더 긴 시퀸스 일수록 메모리와 연산을 덜 사용하면서도 성능은 좋다.
 * Semantic segmentation
-    * 
+    * 디테일 : ADE20K, UperNet framework
+    * 결과
+        * 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
@@ -109,7 +111,7 @@
 ## [`메모`]
 
 ### [배경 지식]
-* 
+* SSM forward and backward
 <br><br>
 
 
