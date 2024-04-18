@@ -46,7 +46,7 @@
     * x는 포워드 방향, 백워드 방향 2가지로 진행된다.
     * 1차원 Conv -> 리니어 프로젝션. B, C Δ 3개로 만들어준다.
     * Δ는 A와 B를 A바와 B바로 만드는데 사용한다.
-    * SSM을 사용해 y_forward와 y_backward를 계산한다.
+    * A바와 B바는 SSM을 사용해 y_forward와 y_backward를 계산한다.
     * z를 게이트로 사용하여 y_forward와 y_backward를 선택적으로 추출.(RNN methods)
     * 두 결과를 더하면 최종 아웃풋 시퀸스 T_l.
 * Architecture details
@@ -95,7 +95,17 @@
 * Semantic segmentation
     * 디테일 : ADE20K, UperNet framework
     * 결과
-        * 
+        * DeiT와 비교, Ti와 S 모두 높다.
+        * CNN과 비교, 큰 사이즈의 ResNet101과 같은 성능.
+        * 다운 스트림을 효율적으로 평가하기 위해 FPN 모듈 적용.
+        * 기존 백본들에 비해 이미지가 커질수록 효율성 격차가 크다.
+* Object detection, Instance segmentation
+    * 디테일 : COCO 2017, ViTDet framework
+    * 결과
+        * DeiT와 비교, AP box와 AP mask 모두 좋은 성능.
+* Ablation study
+    * Bidirectional SSM 빼면 성능이 드랍된다.
+    * 다만 SSM과 Conv1D 결합하여 사용해야만 한다.
 <br><br>
 
 ### [추가로 볼 레퍼런스]
