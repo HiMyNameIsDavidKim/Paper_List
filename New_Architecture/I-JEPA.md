@@ -27,11 +27,11 @@
 
 ### [해결 아이디어]
 * Architecture overview
-    * 추상적인 representation 공간에서 지워진 정보를 예측한다.
+    * 추상적인 representation space에서 지워진 정보를 예측한다.
     * 컨텍스트 블럭 1개가 주어지면, 다양한 타겟 블럭의 representation을 예측한다.
     * 이 작업은 1개의 같은 이미지 내에서 이루어진다.
     * 이 target representation은 이미 학습된 타겟 인코더가 계산한 값이다.
-    * 기존의 generative methods는 pixel 공간에서 예측을 했다면, I-JEPA는 추상적인 공간에서 예측을 한다.
+    * 기존의 generative methods는 pixel space에서 예측을 했다면, I-JEPA는 추상적인 space에서 예측을 한다.
     * 불필요한 픽셀 레벨의 디테일을 굳이 예측할 필요 없고 고압축 의미론적 feature만 학습하고자 하는 것이다.
     * 멀티 블럭 마스킹 학습 전략도 중요하다.
     * SSL을 하면서도 충분히 많은 양의 타겟 블럭을 뽑아낼 수 있다.
@@ -60,11 +60,47 @@
         * JEA와 다른점은 추가적인 정보 z가 hand-craft 증강 기법이 아니다.
         * JEA와 유사한 원인으로 차원 붕괴의 문제를 야기할 수 있는데(에너지 면이 평평함), 이를 피하기 위해 x인코더 y인코더에 비대칭 아키텍처를 적용했다. (두 인코더 종류가 다름)
 * Method
-    * 저자들은 ViT 아키텍처를 활용해 context 인코더, target 인코더
+    * 저자들은 ViT 아키텍처를 활용해 context 인코더, target 인코더, predictor를 만들었다.
+    * Targets
+        * 특정 이미지 블럭의 representation 이다.
+        * 이미지 y가 주어지면 겹치지 않게 N개 패치로 잘 쪼갠다.
+        * 이를 타겟 인코더 f에 넣고 패치 레벨의 representation s_y를 구한다.
+        * 패치 1개는 s 1개와 1대1 대응된다.
+        * loss 계산을 위한 타겟을 얻기 위해 랜덤하게 블럭 M을 4개 샘플링한다.
+        * 이 블럭의 종횡비는 랜덤(0.75~1.5), 스케일도 랜덤(0.15~0.2) 이다.
+    * Context
+        * 이미지에서 단일 블럭 x를 샘플링한다.
+        * 이 블럭의 종횡비는 고정, 스케일은 랜덤(0.85~1.0) 이다.
+        * 여기에 타겟의 영역과 동일한 영역, 타겟 마스크, B로 마스킹 한다.
+        * 컨텍스트 인코더 f에 넣고 패치 레벨의 representation s_x를 구한다.
+    * Prediction
+        * predictor g는 마스킹된 컨텍스트 인코더의 결과(s_x)를 인풋으로 받는다.
+        * 타겟 블럭 M의 패치레벨 representation(s_y)를 예측해야한다.
+        * 마스크 토큰은 파라미터화 되어 있다.
+    * Loss
+        * loss는 L2를 평균해서 사용한다. (블럭 4개 평균)
+        * predictor가 예측한 s_y와 타겟 인코더의 s_y로 loss를 계산한다.
+        * predictor와 컨텍스트 인코더는 기존 방식(gradient)으로 업데이트 한다.
+        * 타겟 인코더는 기존 방식을 사용하지 않고 다르게 업데이트 한다.
+        * 컨텍스트 인코더 파라미터의 exponential moving average를 계산하여 업데이트 하는데, 이것은 JEA 다른 논문에서 증명한 기법이다.
 <br><br>
 
 ### [결과 분석]
-* 
+* Image classification
+    * 디테일 : Appendix A
+    * ImageNet-1K
+        * linear evaluation(=linear probing)방법으로 SSL 모델과 비교한다.
+        * linear evaluation이란 SSL 후 인코더 블럭은 고정(frozen)하고 classification head만 학습하는 것이다.
+        * 대표적인 모델 data2vec, MAE, CAE 보다 좋은 성능이다.
+        * 에포크 수가 크게 감소했다.
+        * 추가 기법을 사용한 iBOT 모델과 유사한 성능의 I-JEPA Huge 448 모델.
+    * Low-Shot ImageNet-1K
+        * Low-Shot 기법 전체 이미지 중 1%(클래스 당 12~13 이미지)만 지도 학습.
+        * 표에 나온 값은 fine-tuning이든 linear probing이든 best 값.
+        * 마찬가지로 더 적은 에포크 수에서 더 좋은 성능.
+    * Transfer learning
+        * linear probing 방법 사용, Cifar100, places205, iNat18 평가.
+* Local prediction tasks
 <br><br>
 
 ### [추가로 볼 레퍼런스]
