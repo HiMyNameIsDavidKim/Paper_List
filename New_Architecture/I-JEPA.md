@@ -100,7 +100,27 @@
         * 마찬가지로 더 적은 에포크 수에서 더 좋은 성능.
     * Transfer learning
         * linear probing 방법 사용, Cifar100, places205, iNat18 평가.
+        * 뛰어난 성능.
 * Local prediction tasks
+    * 상대적으로 low level의 feature를 사용하여 처리하는 task.
+    * object counting and depth prediction
+    * 좋은 성능이나 MAE가 더 좋긴 함.
+* Scalability
+    * Model efficiency
+        * Fig 5의 GPU hours를 보면 epochs만 작은게 아니라 빠르다.
+        * 특히 generative methods에 비교하면 차이가 크다.
+    * Scaling data size
+        * 큰 프리트레이닝 dataset을 사용하면 더 성능이 좋았다.
+* Ablation studies
+    * Predicting in representation space
+        * Table 7을 보면 픽셀 스페이스보다 추상 스페이스로 추론하는게 좋다.
+    * Masking strategy
+        * Table 6을 보면 다양한 마스킹 전략을 시도했다.
+        * multi-block : 논문의 전략
+        * rasterized : 4분면으로 나누고 1개는 컨텍스트, 3개는 타겟.
+        * block : 1개 불럭, 크기가 큰 블럭(0.6)
+        * random : 랜덤한 패치, 합치면 크기가 큼(0.6)
+        * 내 생각, 이미지의 모든 부분을 다 넣을 필요도 없고, 이미지가 클 필요도 없다. 적당한 크기가 중요. 1개의 이미지를 여러번 사용하면 효율적이다.
 <br><br>
 
 ### [추가로 볼 레퍼런스]
