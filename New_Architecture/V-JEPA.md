@@ -92,9 +92,21 @@
 
 ### [결과 분석]
 * Experimental setting
-    * 
-* Eval on video task
-    * 
+    * VideoGLUE benchmark에 속한 다양한 task 진행.
+    * Kinetics-400, action recognition classification
+    * Something-Something-v2, motion classification
+    * AVA, action localization
+    * ImageNet, object recognition classification
+    * Places205, scene classification
+    * iNaturalist 2021, fine-grained recognition
+* Eval on video tasks
+    * frozen evaluation protocol을 사용했다.
+    * V-JEPA의 ViT-H/16 384 모델이 기존 비디오 best 모델(InternVideo) 보다 성능이 좋다.
+    * V-JEPA가 기존 이미지 best 모델(DINOv2)에 근접했다.
+    * 이미지 모델들은 기본적으로 데이터셋이 매우 크기 때문에 이정도도 대단한 성과다.
+* Eval on image tasks
+    * attentive probe 방식을 사용했다.
+    * 마찬가지로 비디오 best 모델들에 비해서는 높은 성능이 나왔다.
 <br><br>
 
 ### [추가로 볼 레퍼런스]
