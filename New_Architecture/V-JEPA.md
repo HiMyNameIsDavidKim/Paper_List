@@ -13,7 +13,7 @@
 
 ### [기존 문제점]
 * 인지 이론을 활용한 SSL은 NLP에 큰 발전을 기여했다.
-* 이미지 분야 중 특히 비디오에 어떻게 적용해야할지 아직 특출난 방법이 없다.
+* 비전 분야 중 특히 비디오에 어떻게 적용해야할지 아직 특출난 방법이 없다.
 <br><br>
 
 ### [해결 아이디어]
@@ -33,7 +33,7 @@
 * Methodology
     * I-JEPA
         * 1개의 context으로 4개의 target을 추상적인 레이턴트 스페이스에서 예측한다.
-        * 중요한 부분은 3개다. (context encoder, target encoder, predictor)
+        * 중요한 모듈은 3개다. (context encoder, target encoder, predictor)
         * 저자들은 이 아키텍처를 비디오와 마스킹에 적용해 V-JEPA를 구상했다.
     * Architecture
         * backbone으로 ViT를 사용한다. (ViT-L or ViT-H)
