@@ -17,7 +17,7 @@
 <br><br>
 
 ### [해결 아이디어]
-* knowledge distillation
+* Knowledge distillation
     * teacher-student 전략의 레퍼런스.
     * 스튜던트 모델이라고 불리는 더 작은 모델과 티처 모델이라고 불리는 더 큰 모델.
     * 스튜던트 모델이 티처 모델의 소프트 레이블으로 학습한다.
@@ -75,23 +75,19 @@
         * 실험 결과 트랜스포머 티처보다 CNN 티처가 더 좋은 퍼포먼스가 나온다.
         * 트랜스포머 디스틸레이션 간에 inductive bias가 상속되기 때문이다.
         * 그래서 이 논문의 디폴트 티처는 RegNetY-16GF 이다.
-    * comparision of distillation methods
+    * Comparision of distillation methods
         * Table 3를 보자.
         * 지도방식을 기존, soft 티처, hard 티처로 했을때 hard 티처가 좋다.
         * 하지만 그 보다도 label과 hard를 같이 사용하는 경우가 제일 좋았다.
         * 클래스 토큰만, 디스틸레이션 토큰만, 두 토큰 모두 했을때 두 토큰이 미세하게 높다.
     * 티처의 inductive bias가 상속되는가?
-        * 
-    * Epochs 의 영향 분석
-        * 
+        * Table 4를 보자.
+        * Conv 모델을 티처로 했을때 더 상관관계가 높다.
+        * 다시 말해 티처의 지식이 더 효과적으로 전달되었다.
 * Efficiency vs Accuracy
     * image classification 분야는 특히나 정확도 말고도 FLOPs, 파라미터수, 모델 크기 등 다른 것들도 중요하다.
     * Fig 1을 보면 아키텍처만 바꾼 DeiT 가 EfficientNet 보다 성능이 약간 떨어진다.
     * 디스틸레이션 트레이닝 전략까지 사용한 DeiT⚗가 6%나 좋아지며 EfficientNet도 이긴다.
-* Transfer learning
-    * 
-* Ablation studies
-    * 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
