@@ -98,7 +98,9 @@
     * frozen feature를 사용해서 linear classification 진행했다.
     * 100 epochs 학습. lr=30, no weight decay.
     * Ablation: contrastive loss mechanisms
+        * Fig 3
         * end to end 모델은 K가 1024 이상 넘으면 구동할 수 없다.
+        * K는 key와 query가 다른 샘플인 negative pair의 개수.
         * 1024까지는 MoCo랑 비슷했는데 그 이상은 효율성 문제로 학습이 안된다.
         * memory bank 모델은 K가 커질 수는 있으나 MoCo 보다 좋지 않다.
     * Ablation: momentum
@@ -108,7 +110,12 @@
         * MoCo R50은 다른 24M 정도 크기의 모델 중에 가장 뛰어나다.
         * MoCo R50w4x은 모든 모델 중에 가장 뛰어나다.
 * Transferring features
-    * 
+    * PASCAL VOC object detection
+        * Table 2, Table 3, Table 4
+    * COCO object detection and segmentation
+        * Table 5
+* Fine-tuning in ImageNet
+    * 기존 76.5% -> MoCo(IG) 77.3%
 <br><br>
 
 ### [추가로 볼 레퍼런스]
