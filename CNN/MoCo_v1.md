@@ -24,8 +24,8 @@
     * 이게 잘 되려면 인코딩 된 쿼리는 매칭할 키와 유사하고 다른 키와는 유사하면 안된다.
     * 그래서 학습이 진행되면서 contrastive loss가 최소가 되도록 한다.
     * contrastive loss는 두 개의 입력 데이터를 받아 유사한 데이터는 가까이 배치하고 다른 데이터는 멀리 배치하는 것을 공식화한 loss 이다.
-* Momentum Contrast
-    * 크고 일관성 있는 딕셔너리를 구축하기 위한 새로운 전략.
+* Overview
+    * 크고 일관성 있는 딕셔너리를 구축하기 위한 새로운 전략 momentum contrast.
     * 딕셔너리를 큐로 유지한다. (현재 배치를 인큐, 가장 오래된 배치를 디큐)
     * 큐로 쌓기 때문에 미니배치로 설정한 사이즈 보다 커질 수 있다.
     * 키 인코더를 천천히 업데이트하여 일관성을 유지한다.
@@ -78,11 +78,37 @@
             * 메모리 뱅크는 전체 샘플을 다 포함하고 업데이트에 사용되는 샘플은 곧 자기 자신의 일부이므로 업데이트가 적절하게 되지 않기 때문이다.
             * 전체 미니배치를 다 써야하기 때문에 메모리에서 비효율적이다.
     * Pretext task
-        * 
+        * 기존의 pretext task 중에서 하나 채택했다.
+        * 같은 이미지에서 만든 쿼리와 키를 postivie pair로 설정했다.
+        * 서로 다른 이미지에서 만든 쿼리와 키를 negative pair로 설정했다.
+        * 이미지에 2개의 랜덤한 view(=augmentation)를 적용한다.
+        * 쿼리와 키는 쿼리 인코더와 키 인코더에 의해 인코딩 된다.
+        * algo 1이 전체 프로세스를 표현하고 있다.
+        * positive pair: (랜덤 증강(이미지1), 랜덤 증강(이미지1))
+        * negative pair: (랜덤 증강(이미지1), 랜덤 증강(이미지2))
+        * negative pair는 (큐-1)개로 이미지2, 이미지3, ..., 이미지(큐-1)
+        * 인코더로 ResNet 사용.
+        * batch normalization이 방해하는 것을 발견하여 shuffling BN 사용.
 <br><br>
 
 ### [결과 분석]
-* 
+* Pre-training details
+    * ImageNet, SGD, weight decay, batch=256, lr=0.03, epochs=200, lr step decay
+* Linear classification
+    * frozen feature를 사용해서 linear classification 진행했다.
+    * 100 epochs 학습. lr=30, no weight decay.
+    * Ablation: contrastive loss mechanisms
+        * end to end 모델은 K가 1024 이상 넘으면 구동할 수 없다.
+        * 1024까지는 MoCo랑 비슷했는데 그 이상은 효율성 문제로 학습이 안된다.
+        * memory bank 모델은 K가 커질 수는 있으나 MoCo 보다 좋지 않다.
+    * Ablation: momentum
+        * 모멘텀 값을 바꿔가며 실험했을 때 0.999가 제일 좋았다.
+    * Comparison with previous results
+        * Table 1
+        * MoCo R50은 다른 24M 정도 크기의 모델 중에 가장 뛰어나다.
+        * MoCo R50w4x은 모든 모델 중에 가장 뛰어나다.
+* Transferring features
+    * 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
