@@ -75,14 +75,29 @@
 
 
 
-## [IF Order of AI]
-* 1 CVPR : IEEE/CVF Conference on CV and Pattern Recognition 63.10
-* 2 NIPS : Conference on Neural Information Processing Systems 42.30
-* 3 ICCV : IEEE/CVF International Conference on Computer Vision 40.60
-* 4 ECCV : European Conference on CV 33.20
-* 5 ICML : International Conference on ML 32.40
-* 6 AAAI : Association for the Advancement of AI 32.10
-* 7 ICLR : International Conference on Learning Representations 31.80
-* 10 IJCAI : International Joint Conference on AI 19.20
-* 15 KDD : Knowledge Discovery and Data Mining 16.20
+## [AI 컨퍼런스]
+* CVPR(6월) : IEEE/CVF Conference on CV and Pattern Recognition
+* NIPS(12월) : Conference on Neural Information Processing Systems
+* ICLR(5월) : International Conference on Learning Representations
+* ICML(7월) : International Conference on ML
+* ECCV(9월) : European Conference on CV
+* ICCV(12월, 홀수년도) : IEEE/CVF International Conference on CV
+* AAAI(2월) : Association for the Advancement of AI
+* IJCAI(8월) : International Joint Conference on AI
+* KDD(8월) : Knowledge Discovery and Data Mining
+* 참고사항
+    * [`Google Scholar Top Publications`](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng)
+    * [`컨퍼런스 마감일 검색`](http://www.wikicfp.com/cfp/call?conference=machine%20learning)
+    * [`Research.com IF 검색`](https://research.com/conference-rankings/computer-science)
+<br><br>
+
+
+
+## [AI 저널]
+* TPAMI : IEEE Transactions on Pattern Analysis and Machine Intelligence
+* TIP : IEEE Transactions on Image Processing
+* Pattern Recognition by Elsevier
+* 참고사항
+    * 저널은 매달 접수
+    * [`Research.com IF 검색`](https://research.com/journals-rankings/computer-science/computer-vision)
 <br><br>
