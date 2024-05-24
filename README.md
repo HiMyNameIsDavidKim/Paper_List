@@ -85,10 +85,15 @@
 * AAAI(2월) : Association for the Advancement of AI
 * IJCAI(8월) : International Joint Conference on AI
 * KDD(8월) : Knowledge Discovery and Data Mining
+* UAI(7월) : Conference on Uncertainty in AI
 * 참고사항
     * [`Google Scholar Top Publications`](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng)
     * [`컨퍼런스 마감일 검색`](http://www.wikicfp.com/cfp/call?conference=machine%20learning)
     * [`Research.com IF 검색`](https://research.com/conference-rankings/computer-science)
+    * acceptance rate
+        * 보통 대부분 20% 대.
+        * ICLR, UAI가 30% 대로 높음.
+        * IJCAI, KDD가 10% 대로 낮음.
 <br><br>
 
 
