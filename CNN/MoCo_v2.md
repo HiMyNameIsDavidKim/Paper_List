@@ -32,7 +32,7 @@
 * Improved designs
     * SimCLR는 기존 end-to-end 모델에서 3가지 차별점을 뒀다.
     * 첫번째는 4k or 8k의 거대한 배치로 negative 샘플을 늘린 것이다.
-    * 두번째는 최종 FC 레이어를 MLP head로 바꿨다.
+    * 두번째는 최종 레이어를 MLP head로 바꿨다.
     * 세번째는 강력한 데이터 증강 기법을 사용했다.
     * MoCo는 이미 queue를 사용해서 충분히 큰 배치를 사용한다.
     * 따라서 두번째 세번째를 MoCo에 적용한다.
@@ -49,7 +49,7 @@
     * pre-training 에만 사용하고 fine-tuning에서는 버리는 헤드이다.
     * τ의 기본값 0.07에서도 linear probing 성능이 2% 향상 됐다.
     * τ가 커지면 커질수록 좋아진다.
-    * Table 1을 보면 5.6%로 크게 향상됐다.
+    * Table 1을 보면 5.6% 만큼 크게 향상됐다.
 * Augmentation
     * 기존 MoCo에서 사용하던 방식에 blur와 color distortion을 추가했다.
     * Table 1을 보면 이것만 추가해도 성능이 2.8% 올라간다.
@@ -59,7 +59,7 @@
     * Table 2
     * 모든 기법을 적용한 MoCo v2의 200 에포크는 같은 배치 같은 에포크의 SimCLR과 비교했을 때 크게 성능을 앞선다.
     * 심지어 큰 배치의 SimCLR과 비교해도 더 좋다.
-    * 최대 에포크로 늘려서 학습한 두 모델을 비교했을 때 SimCLR이 더 좋다.
+    * 최대 에포크로 늘려서 모델을 비교했을 때 SimCLR보다 MoCo v2가 더 좋다.
 * Computational cost
     * Table 3
     * SimCLR을 GPU에서 학습한다고 가정한다. (원래는 TPU)
