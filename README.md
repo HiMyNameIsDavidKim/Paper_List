@@ -100,6 +100,7 @@
 
 ## [AI 저널]
 * TPAMI : IEEE Transactions on Pattern Analysis and Machine Intelligence
+* IJCV : International Journal of Computer Vision
 * TIP : IEEE Transactions on Image Processing
 * Pattern Recognition by Elsevier
 * 참고사항
