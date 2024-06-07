@@ -86,9 +86,33 @@
 
 ### [결과 분석]
 * Implementation details
-    * 
+    * AdamW, step weight decay, warm up, contrastive loss(τ=0.2), Linear probing은 SGD
+    * Table 2, 3
 * Experimental results
-    * 
+    * Self-supervised learning frameworks
+        * 모든 framework에 random projection trick 사용.
+        * Table 4
+        * MoCo v3가 다른 framework 보다 우수하다.
+        * R50 에서는 BYOL이 더 높게 나왔다.
+    * Comparisons with prior art
+        * Self-supervised transformers
+            * Table 1
+            * ViT의 모든 종류를 MoCo v3로 학습했다.
+            * iGPT 보다 매우 가벼우며 퍼포먼스도 더 좋다.
+            * 아래 'mask patch prediction'은 그냥 일반 ViT를 JFT-300M에서 프리트레이닝한 모델이다.
+            * 용어에서 혼동을 야기할 수 있으나 auto encoder가 아니다.
+            * 프리트레이닝 후 파인튜닝한 경우도 MoCo v3가 더 우수하다.
+        * Comparisons with big ResNets
+            * Figure 8
+            * SimCLR이나 BYOL으로 학습한 거대 ResNet 보다 MoCo v3 ViT가 더 퍼포먼스가 좋다.
+        * End-to-end fine-tuning
+            * Table 5
+            * 이는 프리트레이닝 후 웨이트 frozen 없이 전체를 학습한 것이다.
+            * 일반 ViT와 DeiT 보다 MoCo v3가 퍼포먼스가 더 좋다.
+    * Transfer learning
+        * Table 6
+        * 4가지 down stream task을 평가했다.
+        * ImageNet classification supervised 보다도 높게 나왔다.
 <br><br>
 
 ### [추가로 볼 레퍼런스]
