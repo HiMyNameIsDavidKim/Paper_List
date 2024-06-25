@@ -58,16 +58,16 @@
     * Regressor
         * regressor H는 인코더의 아웃풋 Z_v를 인풋으로 받는다.
         * masked 패치의 representation Z_m을 예측한다.
-        * (저자는 모든 모듈이 명시적이고 한가지 task만 한다고 했는데... 이 regressor가 처리하는 일이 많고 복잡하다. 하나도 간단하지 않다. 과대광고 멈춰주길 바란다...ㅇㅁㅇ)
         * Q_m : initial queries, 어떤 패치가 masked 인지에 대한 정보
         * Q_m을 참고해서 representation들을 정렬한다.
+        * (저자는 모든 모듈이 명시적이고 한가지 task만 한다고 했는데... 이 regressor가 처리하는 일이 많고 복잡하다. 하나도 간단하지 않다. 과대광고 멈춰주길 바란다...ㅇㅁㅇ)
     * 디코더
         * 디코더 G는 regressor의 아웃풋 Z_m을 인풋으로 받는다.
         * 타겟 Y_m을 reconstruction 한다.
     * Objective function
         * 마스킹은 BEiT처럼 랜덤하게 아무 패치나 무작위로 한다.
         * 마스킹 되는 양은 절반이다. (패치 196개 중 98개)
-        * 타겟 Z_m은 masked 패치 X_m만 인코더에 따로 넣어 구한다.
+        * 타겟 Z_m을 구하기 위해 masked 패치 X_m만 인코더에 따로 넣는다.
         * 이 인코더는 visible 패치를 처리하는 인코더와 동일한 인코더 이다.
         * 타겟 Y_m은 픽셀 수준인줄 알았는데 그건 또 아니다.
         * d-VAE로 reconstruction 타겟 Y_m을 만든다.
