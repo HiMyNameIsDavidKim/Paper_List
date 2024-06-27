@@ -87,8 +87,38 @@
         * label 없이 ImageNet 학습, adamW, batch 1024, warm up, cosine decay.
 * Main Results
     * Comparing on ImageNet
-        * ResNet supervised가 79.3%, ViT supervised가 79.8% 이다.
-        * 
+        * Table 2 윗부분
+        * ViT-S 기준 BYOL, MoCo v2, SwAV보다 더 좋은 성능이다.
+        * k-NN이 linear와 비슷한 수준으로 매우 높은 성능이다.
+        * Table 2 아랫부분
+        * 패치 사이즈 8을 사용한 경우 모든 아키텍처의 모델 중에서 가장 성능이 좋다.
+        * 물론 패치 사이즈 16에 비해서 쓰루풋이 크게 줄어든다.
+    * Properties of ViT trained with SSL
+        * Image retrieval
+            * Table 3
+        * Copy detection
+            * Table 4
+        * Discovering the semantic layout of scenes
+            * Fig 1
+            * 그림을 보면 self-attention maps가 segmentation 정보를 포함하고 있다.
+            * 어텐션 맵에서 바로 마스크를 추출하고 특성을 측정해보자.
+            * Fig 3
+            * 서로 다른 헤드들은 각각 다른 semantic region을 집중한다.
+            * Fig 4
+            * supervised ViT는 클래스 토큰의 클러스터를 양적으로 질적으로 좋게 형성하지 못한다.
+* Ablation study
+    * Table 7
+    * 메서드를 바꿔가며 평가해봤다.
+    * 모든 메서드가 유효하다.
+    * Fig 5
+    * 패치 사이즈를 줄이는 것이 DeiT의 경우보다는 쓰루풋 trade off가 덜하다.
+    * Fig 6
+    * teacher 네트워크를 다양하게 바꿔봤는데 모멘텀 케이스가 가장 좋았다.
+    * 왼쪽 그림은 학습이 진행되는 동안 acc를 뽑은 것이다.
+    * Fig 7
+    * centering과 sharpening을 동시에 사용했을 경우 붕괴가 일어나지 않는다.
+    * Table 9
+    * 작은 배치를 사용할 경우 acc가 줄어든다......ㅇㅁㅇ....(킹받네...)
 <br><br>
 
 ### [추가로 볼 레퍼런스]
