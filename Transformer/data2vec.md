@@ -31,7 +31,7 @@
     * 이를 바탕으로 전체 인풋에 대한 representation을 예측한다.
     * teacher의 웨이트는 student의 exponentially decaying average 값이다.
     * 타겟이 연속된 값이고 컨텍스트화 되어있기 때문에 기존 모델보다 representation이 풍부하다.
-* Model architecture
+* Method
     * 핵심은 인풋 데이터의 일부를 보고 전체 인풋 데이터를 예측하는 것이다.
     * student 모델을 학습시키며 EMA 값으로 teacher 모델을 학습한다.
     * Model architecture
@@ -47,18 +47,32 @@
     * Teacher parameterization
         * teacher 모델은 마스킹되지 않은 원본 샘플의 representation을 인코딩한다.
         * 이 파라미터는 exponentially moving average (EMA)로 업데이트 된다.
-* Objective
-    * 컨텍스트화된 타겟 y_t가 주어지면, Smooth L1 loss를 사용한다.
-    * β는 MSE loss와 L1 loss 간에 변환을 컨트롤한다.
-    * 타겟 y_t와 모델의 예측값 f(x)_t 간의 갭에 따라 결정된다.
-    * 갭이 β보다 작으면 MSE, 크면 L1 으로 계산된다.
-    * Smooth L1의 장점은 이상값(outliers)에 대하여 민감하게 반응하지 않는다.
+    * Objective
+        * 컨텍스트화된 타겟 y_t가 주어지면, Smooth L1 loss를 사용한다.
+        * β는 MSE loss와 L1 loss 간에 변환을 컨트롤한다.
+        * 타겟 y_t와 모델의 예측값 f(x)_t 간의 갭에 따라 결정된다.
+        * 갭이 β보다 작으면 MSE, 크면 L1 으로 계산된다.
+        * Smooth L1의 장점은 이상값(outliers)에 대하여 민감하게 반응하지 않는다.
 <br><br>
 
 ### [결과 분석]
 * Results
     * Computer vision
-        * 
+        * Table 1
+        * 여기서 싱글 모델이란 별개의 토크나이저를 사용하지 않은 모델이다.
+        * ViT-B는 세팅에서는 가장 뛰어났다.
+        * ViT-L은 전체 모델 중에서 가장 뛰어났다.
+        * 기존의 픽셀을 예측하는 것보다 latent representation을 예측하는 것이 좋다.
+    * Speech, NLP
+        * Table 2, speech에서 최고 아웃풋
+        * Table 4, NLP에서 BERT, RoBERT 보다 좋은 결과
+    * Ablations
+        * Fig 3
+        * 타겟 representation을 많이 컨텍스트화 할수록 좋은 결과
+        * Table 5
+        * 타겟 feature를 어텐션 레이어가 아닌 FFN으로 변경 시 안좋은 결과
+* Discussion
+    * 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
