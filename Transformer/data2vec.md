@@ -71,8 +71,6 @@
         * 타겟 representation을 많이 컨텍스트화 할수록 좋은 결과
         * Table 5
         * 타겟 feature를 어텐션 레이어가 아닌 FFN으로 변경 시 안좋은 결과
-* Discussion
-    * 
 <br><br>
 
 ### [추가로 볼 레퍼런스]
