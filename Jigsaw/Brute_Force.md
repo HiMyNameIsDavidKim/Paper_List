@@ -5,7 +5,7 @@
 ## [`논문 요약`]
 
 ### [저자의 의도]
-* 분리되고 손상된 이미지의 조각들을 재조립해보자.
+* 분리되고 정렬되지 않은 이미지의 조각들을 재조립해보자.
 * 이미지 조각 간의 상대적 위치를 예측하는 아키텍처를 제시한다.
 * 재조립 전략으로 그래프 문제의 shortest path를 찾는다.
 * MET 데이터셋으로부터 새로운 데이터셋을 발표한다.
@@ -40,8 +40,8 @@
 * Puzzle resolution
     * Formulation
         * case 1: center 조각 1개와 non-center 조각 8개의 정렬되지 않은 목록이 주어진 경우
-        * case 2: 다른 이미지에서 추출한 others 조각이 같이 주어진 경우
-        * case 3: 9개 조각이 주어지고 중심 조각을 알 수 없는 경우
+        * case 2: 9개 조각이 주어지고 중심 조각을 알 수 없는 경우
+        * case 3: 다른 이미지에서 추출한 others 조각이 같이 주어진 경우
 * Graph formulation
     * 직소 퍼즐 문제를 해결하는 방법은 그래프에서 최단 경로를 찾는 것이다.
     * Dijkstra 혹은 그 변형을 사용했다.
@@ -50,7 +50,7 @@
     * 깊이 i에서 모든 노드는 이전 조각을 모두 할당했을 때 조각 i를 둘 수 있는 위치다.
     * 각 edge는 classification score를 가중치로 받는다.
     * 그래프의 크기는 E, 엣지의 갯수는 N, 조각의 수 n, 위치의 수 p
-    * Fig 4 3 조각 예시(왼:central unknown, 오:central known)
+    * Fig 4에서, 3 조각 예시(왼:central unknown, 오:central known)
     * center 조각을 아는 경우, (n=8, p=8), E=150k, N=100k
     * center 조각을 모르는 경우, (n=9, p=9), E=1.3M, N=1M
     * others가 섞인 경우, E=5.0e9, N=4.0e8
