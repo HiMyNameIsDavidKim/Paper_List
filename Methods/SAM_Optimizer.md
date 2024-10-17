@@ -22,6 +22,7 @@
     * Sharpness-Aware Minimization
     * 일반화 성능에 있어서 효율적이고 효과적이며, scalable 하다.
     * loss의 value와 sharpness를 동시에 최소화한다.
+    * Fig 1
     * 주변 값을 함께 고려해 uniformly하게 낮은 loss value를 찾는다.
 * Sharpness-Aware Minimization
     * 공식화
@@ -40,6 +41,7 @@
             * where 왼쪽: 원래 loss 함수를 최소화 하는 optimizer 공식 (+ L2 norm)
             * where 오른쪽: ϵ만큼 파라미터를 변화했을 때, 손실의 날카로움을 줄이는 공식
             * (w+ϵ) 범위에서 가장 큰 loss를 계산하고 그 값이 (w)에서 loss와 차이가 작게 한다.
+            * 여기서 ρ는 주변으로 취급하는 반경
         * Eq 2
             * classical dual norm problem 을 사용한다.
             * norm은 벡터의 크기를 측정하는 함수이다.
@@ -65,9 +67,26 @@
 
 ### [결과 분석]
 * Image Classification
-    * 
+    * 주변 반경 ρ = {0.01, 0.02, 0.05, 0.1, 0.2, 0.5}
+    * Table 1
+    * cifar10, cifar100
+    * WideResNet, PyramidNet
+    * 모든 케이스에서 SAM을 사용할 경우 모델의 성능이 더 좋아졌다.
+    * Table 2
+    * ImageNet
+    * ResNet-50, 101, 152
+    * 모든 케이스에서 SAM을 사용할 경우 퍼포먼스 성능이 더 좋아졌다.
 * Finetuning
-    * 
+    * 큰 데이터셋 프리 트레이닝 -> 관련 작은 데이터셋 transfer learning
+    * 프리트레이닝은 SAM을 쓴게 아니라 기존 모델을 불러와서 사용한다.
+    * EffNet-b7 (ImageNet), EffNet-L2 (JFT-300M)
+    * SOTA (ImageNet): EffNet, BiT-M, ViT 등 다양한 모델 중 acc 가장 높은 모델
+    * 모든 케이스에서 SAM을 사용할 경우 일반화 성능이 좋아졌다.
+    * 몇몇 케이스에서는 기존 SOTA의 성능을 뛰어넘는 결과를 가져오기도 했다.
+* 내 생각
+    * 이 평가방식은 학습한 데이터셋에 대한 generalization 성능을 평가하는 것이다.
+    * 어떤 데이터셋에 대해서도 robustness 하다를 평가하기 위해서는 다른 방법을 사용해야 한다.
+    * pre-training에서 SAM 사용하고 linear probing 하는게 더 정확한 결과로 생각된다.
 <br><br>
 
 ### [추가로 볼 레퍼런스]
