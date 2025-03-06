@@ -82,14 +82,32 @@
         * BoolQ, PIQA, SIQA, HellaSwag, WinoGrande, ARC easy and challenge, OBQA
         * Cloze task: 빈칸 맞추기 문제
         * Winograd task: 문장 내 대명사 맞추기 문제
-        * 크기가 더 작고 성능이 좋다.
+        * PaLM과 비교했을 때 크기는 작은데 Winograd 외에 모든 평가에서 성능이 좋다.
+        * 특이한 점은 ARC는 65B 보다 13B 에서 더 좋은 성능을 보인다.
     * Closed-book Question Answering
         * Table 4, 5
         * NaturalQuestions, TriviaQA
         * 질문을 답할 수 있는 근거를 포함한 문서를 접근하지 않고 대답
-        * 크기가 더 작고 성능이 좋다.
+        * 65B가 0 shot, few shot 평가에서 SOTA를 달성했다.
+        * 13B 크기만 해도 기존 모델과 견줄만한 성능이다.
+        * 특이한 점은 NaturalQuestions 0 shot에서 33B가 성능이 더 좋다.
     *  Reading Comprehension
         * Table 6
+        * RACE
+        * 중국 학생들의 영어 교육에 사용되는 독해 문제 자료
+        * 65B 모델이 PaLM-540B 수준이며, 13B 모델이 GPT-3 보다 성능이 좋다.
+    * Mathematical reasoning
+        * Table 7
+        * MATH, GSM8k
+        * MATH: 레이텍으로 작성된 중고등학교 수학 문제 12k
+        * GSM8k: 중학교 수학 문제 세트
+        * maj1@k 방법: k개의 답변을 생성하고 그 중 가장 빈도가 높은 답변 선택
+        * Minerva는 PaLM을 수학 데이터셋으로 fine-tuning 한 모델이다.
+        * 65B 모델은 파인튜닝을 하지 않았지만 비슷한 크기의 Minerva-62B 보다 좋은 성능이다.
+        * 하지만 SOTA를 달성하지 못했으며 PaLM 보다도 낮은 성능이다.
+    * Code generation
+        * Table 8
+        * HumanEval, MBPP
         * 
 <br><br>
 
@@ -98,6 +116,7 @@
 <br><br>
 
 ### [내 아이디어]
+* 일부 벤치마크에서 SOTA 성능이 나오지 않았는데 65B 보다 큰 모델을 만들지 않은 이유는 뭘까
 * 
 <br><br>
 
