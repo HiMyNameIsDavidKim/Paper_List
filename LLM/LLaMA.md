@@ -108,6 +108,13 @@
     * Code generation
         * Table 8
         * HumanEval, MBPP
+        * 프로그램에 대한 설명 제공 후 코딩, 인풋-아웃풋 예제로 코드 평가
+        * HumanEval의 @1을 제외하면 모든 테스트에서 가장 좋은 성능을 보인다.
+        * PaLM-cont 모델은 기존보다 더 길게 학습한 모델인데, 비슷한 크기의 LLaMA의 성능이 더 좋다.
+        * 모든 모델은 코드 특화 토큰으로 fine-tuning을 더 하면 성능이 올라간다.
+    * Massive Multitask Language Understanding (MMLU)
+        * Table 9
+        * 인문학, 공학, 사회과학 등 다양한 도메인에 대한 다중 정답 문제 평가
         * 
 <br><br>
 
