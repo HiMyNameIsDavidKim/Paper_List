@@ -115,7 +115,12 @@
     * Massive Multitask Language Understanding (MMLU)
         * Table 9
         * 인문학, 공학, 사회과학 등 다양한 도메인에 대한 다중 정답 문제 평가
-        * 
+        * 5 shot에서 평가
+        * PaLM 이나 Chinchilla에 비해 안좋은 성능이다.
+        * 오픈 데이터셋이 논문이나 책이 부족하기 때문으로 분석했다.
+* Instruction Finetuning
+    * 간단한 fine-tuning으로 MMLU가 급격하게 향상되었다.
+    * LLaMA-I 라는 모델명으로 다른 논문에서 발표했다.
 <br><br>
 
 ### [추가로 볼 레퍼런스]
