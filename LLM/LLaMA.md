@@ -91,7 +91,7 @@
         * 65B가 0 shot, few shot 평가에서 SOTA를 달성했다.
         * 13B 크기만 해도 기존 모델과 견줄만한 성능이다.
         * 특이한 점은 NaturalQuestions 0 shot에서 33B가 성능이 더 좋다.
-    *  Reading Comprehension
+    * Reading Comprehension
         * Table 6
         * RACE
         * 중국 학생들의 영어 교육에 사용되는 독해 문제 자료
