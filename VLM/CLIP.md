@@ -81,8 +81,10 @@
     * CLIP 모델 구현의 핵심에 대한 수도코드를 작성한 것이다.
     * loss를 이미지, 텍스트 양쪽에 대해 계산한 뒤 평균을 내어 반영하는 것을 볼 수 있다.
     * 유사한 방법론으로는 SimCLR, MoCo 가 사용하는 InfoNCE loss가 있다.
-    * 하지만 InfoNCE는 한쪽 방향으로만 학습한다. (이미지 -> 텍스트), (positive, negative)
-* multi-modal embedding space
+    * 하지만 SimCLR, MoCo 같은 경우는 한쪽 방향으로만 학습한다.
+    * (이미지 -> 텍스트 의 (positive, negative))
+    * (=이미지 인코더만 학습하는 것)
+* Multi-Modal Embedding Space
     * CLIP은 사전학습을 하지 않은 이미지 인코더와 텍스트 인코더를 처음부터 학습한다.
     * 또한 representation과 embedding space 사이에 `비선형 프로젝션`을 사용하지 않는다.
     * 대신 저자들은 인코더의 representation을 `리니어 프로젝션`으로 바로 매핑했다.
